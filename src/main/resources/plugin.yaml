@@ -1,20 +1,19 @@
 apiVersion: plugin.halo.run/v1alpha1
 kind: Plugin
 metadata:
-  # The name defines how the plugin is invoked,A unique name
-  name: starter
+  name: plugin-netease-music
 spec:
   enabled: true
-  requires: ">=2.11.0"
+  requires: ">=2.13.0"
   author:
-    name: Halo
-    website: https://github.com/halo-dev
+    name: 困困鱼
+    website: https://github.com/chengzhongxue
   logo: logo.png
-  # 'homepage' usually links to the GitHub repository of the plugin
-  homepage: https://github.com/halo-dev/plugin-starter
-  # 'displayName' explains what the plugin does in only a few words
-  displayName: "插件快速开始模板"
-  description: "这是一个插件快速开始模板"
+  homepage: https://github.com/chengzhongxue/plugin-netease-music
+  displayName: "Netease Music"
+  description: "音乐播放器，支持网易云音乐"
+  configMapName: plugin-netease-music-configmap
+  settingName: plugin-netease-music-settings
   license:
     - name: "GPL-3.0"
       url: "https://github.com/halo-dev/plugin-starter/blob/main/LICENSE"

@@ -1,0 +1,23 @@
+apiVersion: v1alpha1
+kind: Setting
+metadata:
+  name: plugin-netease-music-settings
+spec:
+  forms:
+    - group: basic
+      label: 基本设置
+      formSchema:
+        - $formkit: checkbox
+          label: 歌曲评论
+          name: comment
+          id: comment
+          key: comment
+          help: 显示歌曲热门评论。
+          value: false
+        - $formkit: checkbox
+          label: 隐藏列表
+          name: listopen
+          id: listopen
+          key: listopen
+          help: 默认展开歌曲列表。
+          value: false
