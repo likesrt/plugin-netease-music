@@ -6,7 +6,7 @@ import run.halo.app.plugin.PluginContext;
 
 /**
  * @author moony
- * @url https://moony.la
+ * @url https://kunkunyu.com
  * @date 2024/4/3
  */
 @Component

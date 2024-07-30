@@ -16,4 +16,4 @@ spec:
   settingName: plugin-netease-music-settings
   license:
     - name: "GPL-3.0"
-      url: "https://github.com/halo-dev/plugin-starter/blob/main/LICENSE"
+      url: "https://github.com/halo-dev/plugin-netease-music/blob/main/LICENSE"

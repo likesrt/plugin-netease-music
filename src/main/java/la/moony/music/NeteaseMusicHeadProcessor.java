@@ -35,12 +35,13 @@ public class NeteaseMusicHeadProcessor implements TemplateHeadProcessor {
         properties.setProperty("version", pluginWrapper.getDescriptor().getVersion());
 
         return PROPERTY_PLACEHOLDER_HELPER.replacePlaceholders("""
-                <!-- plugin-netease-music start -->
                 <script> var playlist = []</script>
-                <script src="/plugins/plugin-netease-music/assets/static/netease-music.iife.js?version=${version}"></script>
-                <script src="/plugins/plugin-netease-music/assets/static/base.min.js?version=${version}"></script>
-                <link rel="stylesheet" href="/plugins/plugin-netease-music/assets/static/style.css?version=${version}" />
-                <!-- plugin-netease-music end -->
+                <link rel="stylesheet" id="nms-css" href="/plugins/plugin-netease-music/assets/static/single.min.css?version=${version}" />
+                <script src="/plugins/plugin-netease-music/assets/static/netease-music.iife.js?version=${version}" id="nmi-js"></script>
+                <script type="text/javascript" id="nm-js-extra">
+                var nm_ajax_url = {"swfurl":"\\/wp-content\\/plugins\\/netease-music\\/build\\/js\\/jquery.jplayer.swf"};
+                </script>
+                <script src="/plugins/plugin-netease-music/assets/static/base.min.js?version=${version}" id="nm-js"></script>
                 """, properties);
     }
 }
