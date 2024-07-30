@@ -3,7 +3,7 @@ import type { PMNode } from "@halo-dev/richtext-editor";
 import type { Editor, Node } from "@halo-dev/richtext-editor";
 import { NodeViewWrapper } from "@halo-dev/richtext-editor";
 import { computed, onMounted, ref } from "vue";
-import apiClient from "@/utils/api-client";
+import {axiosInstance} from "@halo-dev/api-client";
 import { VButton,VSpace,VDropdown} from "@halo-dev/components";
 import type {BasicConfig} from "@/types";
 const selecteNeteaseMusic = ref<Object | undefined>();
@@ -46,7 +46,7 @@ onMounted(() => {
 });
 
 const neteaseSong = async () => {
-    const { data: response } = await apiClient.get(
+    const { data: response } = await axiosInstance.get(
             `/apis/api.plugin.halo.run/v1alpha1/plugins/plugin-netease-music/music/neteaseSong?id=${id.value}`);
     if (response.code === 200 && response.songs.length > 0) {
         var mp3_url = 'https://music.163.com/song/media/outer/url?id=' + id.value + '.mp3';
@@ -67,19 +67,19 @@ const neteaseSong = async () => {
     }
 };
 const comments = async () => {
-    const { data: response } = await apiClient.get(
+    const { data: response } = await axiosInstance.get(
             `/apis/api.plugin.halo.run/v1alpha1/plugins/plugin-netease-music/music/neteaseComments?id=${id.value}`);
     selecteComments.value = response;
 }
 
 const getBasicConfig = async () => {
-    const { data: response } = await apiClient.get<BasicConfig>(
+    const { data: response } = await axiosInstance.get<BasicConfig>(
             `/apis/api.plugin.halo.run/v1alpha1/plugins/plugin-netease-music/music/getBasicConfig`);
     basicConfig.value = response;
 }
 
 const neteaseRadio = async () => {
-    const { data: response } = await apiClient.get(
+    const { data: response } = await axiosInstance.get(
             `/apis/api.plugin.halo.run/v1alpha1/plugins/plugin-netease-music/music/neteaseRadio?id=${id.value}`);
     if (response.code === 200 && response.program) {
         var result = response.program;

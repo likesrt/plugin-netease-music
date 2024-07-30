@@ -52,10 +52,10 @@ jobs:
           version=${version#v}
           sed -i "s/version=.*-SNAPSHOT$/version=$version/1" gradle.properties
           ./gradlew clean build -x test
-      - name: Archive plugin-starter jar
+      - name: Archive plugin-netease-music jar
         uses: actions/upload-artifact@v4
         with:
-          name: plugin-starter
+          name: plugin-netease-music
           path: |
             build/libs/*.jar
           retention-days: 1
@@ -65,10 +65,10 @@ jobs:
     needs: build
     if: github.event_name == 'release'
     steps:
-      - name: Download plugin-starter jar
+      - name: Download plugin-netease-music jar
         uses: actions/download-artifact@v4
         with:
-          name: plugin-starter
+          name: plugin-netease-music
           path: build/libs
       - name: Get Name of Artifact
         id: get_artifact
