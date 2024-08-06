@@ -45,6 +45,7 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Install Frontend Dependencies
         run: pnpm install --no-frozen-lockfile
+        working-directory: ./ui
       - name: Build with Gradle
         run: |
           # Set the version with tag name when releasing
@@ -84,7 +85,7 @@ jobs:
         uses: actions/github-script@v7
         if: github.event_name == 'release'
         with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             console.log('environment', process.versions);
 
