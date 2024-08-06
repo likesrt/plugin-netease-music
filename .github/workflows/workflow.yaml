@@ -27,14 +27,14 @@ jobs:
           node-version: 18
       - uses: pnpm/action-setup@v3
         name: Install pnpm
-        id: pnpm install --no-frozen-lockfile
+        id: setup-pnpm
         with:
           version: 8
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
         run: |
-          pnpm_cache_dir=`pnpm store path`
+          pnpm_cache_dir=$(pnpm store path)
           echo "pnpm_cache_dir=$pnpm_cache_dir" >> $GITHUB_OUTPUT
       - uses: actions/cache@v4
         name: Setup pnpm cache
@@ -44,8 +44,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
       - name: Install Frontend Dependencies
-        run: |
-          ./gradlew pnpmInstall
+        run: pnpm install --no-frozen-lockfile
       - name: Build with Gradle
         run: |
           # Set the version with tag name when releasing
